@@ -11,7 +11,7 @@ const colors=[
     '#f32828'
 ]
 
-let quotesFetch;
+let quotesFetch,data;
 
 function getquote()
 {
@@ -20,10 +20,11 @@ function getquote()
             Accept:'application/json'
         },
         url: 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json',
-        success: function (Quotes) {
-            if (typeof Quotes === 'string') 
+        success: function (jsonQuotes) {
+            if (typeof jsonQuotes === 'string') 
             {
-                quotesFetch = JSON.parse(Quotes);               
+                quotesFetch = JSON.parse(jsonQuotes);      
+                data=quotesFetch.quotes[Math.floor(Math.random() * quotesFetch.quotes.length)]; 
             }
         }
     });
@@ -41,15 +42,16 @@ $(document).ready(
                 $("#author").css("color",colorSelected);
                 $("body").css("background",colorSelected+'65');
                 
-                getquote();
-                
-                let data=quotesFetch.quotes[Math.floor(Math.random() * quotesFetch.quotes.length)];
-                $("#text-cont").text(data.quote);
-                $("#author").text('- '+data.author);
+                $.when(getquote()).done(
+                    function(){
+                    $("#text-cont").text(data.quote);
+                    $("#author").text('- '+data.author);
 
-                $("#tweet-quote").attr(
-                    'href',
-                    'https://twitter.com/intent/tweet?text='+encodeURIComponent('" '+data.quote+' "'+' -'+data.author)
+                    $("#tweet-quote").attr(
+                        'href',
+                        'https://twitter.com/intent/tweet?text='+encodeURIComponent('" '+data.quote+' "'+' -'+data.author)
+                    );
+                    }
                 );
             }
         )
