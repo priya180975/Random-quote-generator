@@ -5,19 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link href="style.css" type="text/css" rel="stylesheet">
     <title>Random Quote Generator</title>
 </head>
 <body>
     <div id="quote-box">
-        <div id="text">This is a demo text for display of a quote</div>
-        <div id="author">- Author name</div>
+        <div id="text">
+            <i class="fas fa-quote-left" id="quote"></i>
+            <span id="text-cont">We become what we think about.</span>
+        </div>
+        <div id="author">- Earl Nightingale</div>
         <div id="bottom">
             <button id="new-quote">New Quote</button>
-            <a id="tweet-quote">link</a>
+            <a href="" id="tweet-quote" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
         </div>  
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

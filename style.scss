@@ -35,6 +35,9 @@ body{
     #bottom{
         text-align: left;
         margin-top: 1rem;
+        display: flex;
+        align-items: center;
+
         #new-quote{
             padding: 1rem 2rem;
             // background-color: green;
@@ -43,6 +46,11 @@ body{
             border: none;
             margin-right: 1rem;
             cursor: pointer;
+        }
+
+        .fa-twitter{
+            font-size: 1.5rem;
+            color: black;
         }
     }
 }

@@ -42,6 +42,12 @@ body {
 #quote-box #bottom {
   text-align: left;
   margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #quote-box #bottom #new-quote {
@@ -51,5 +57,10 @@ body {
   border: none;
   margin-right: 1rem;
   cursor: pointer;
+}
+
+#quote-box #bottom .fa-twitter {
+  font-size: 1.5rem;
+  color: black;
 }
 /*# sourceMappingURL=style.css.map */
