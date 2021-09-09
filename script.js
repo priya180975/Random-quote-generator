@@ -11,7 +11,9 @@ const colors=[
     '#f32828'
 ]
 
-let quotesFetch,data;
+let quotesFetch,data,quote,author;
+quote=$("#text-cont").text();
+author=$("#author").text();
 
 function getquote()
 {
@@ -44,17 +46,18 @@ $(document).ready(
                 
                 $.when(getquote()).done(
                     function(){
-                    $("#text-cont").text(data.quote);
-                    $("#author").text('- '+data.author);
-
-                    $("#tweet-quote").attr(
-                        'href',
-                        'https://twitter.com/intent/tweet?text='+encodeURIComponent('" '+data.quote+' "'+' -'+data.author)
-                    );
+                    quote=data.quote;
+                    author='- '+data.author;
+                    $("#text-cont").text(quote);
+                    $("#author").text(author);
                     }
                 );
             }
-        )
+        );
+        $("#tweet-quote").attr(
+            'href',
+            'https://twitter.com/intent/tweet?text='+encodeURIComponent('" '+quote+' "'+author)
+        );
        
     }
 );
